@@ -53,6 +53,13 @@ repositories {
 }
 
 dependencies {
+    compile 'com.android.support:appcompat-v7:25.3.1'
     //noinspection GradleDynamicVersion
+    implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation 'com.scwang.smart:refresh-layout-kernel:2.0.3'
+    implementation 'com.scwang.smart:refresh-header-classics:2.0.3'
+    implementation 'com.scwang.smart:refresh-header-material:2.0.3'
+    implementation "com.scwang.smart:refresh-drawable-paint:2.0.3"
+    implementation "com.scwang.smart:refresh-drawable-path:2.0.3"
 }
