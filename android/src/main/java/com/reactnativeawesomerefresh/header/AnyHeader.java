@@ -22,7 +22,7 @@ public class AnyHeader extends ReactViewGroup implements RefreshHeader {
     private RefreshKernel mRefreshKernel;
     private int mBackgroundColor;
     private Integer mPrimaryColor;
-    private SpinnerStyle mSpinnerStyle = SpinnerStyle.Translate;
+    private SpinnerStyle mSpinnerStyle = SpinnerStyle.Scale;
 
     public AnyHeader(Context context) {
         super(context);

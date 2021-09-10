@@ -205,6 +205,8 @@ dependencies {
     }
 
     implementation project(':reactnativeawesomerefresh')
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.0.0'
+
 }
 
 // Run this once to be able to run the application with BUCK

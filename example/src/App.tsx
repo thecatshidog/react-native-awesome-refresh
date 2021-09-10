@@ -15,11 +15,11 @@ export default function App() {
         }}
       >
         <BoomList
-          data={Array(10).fill(0)}
+          data={Array(30).fill(0)}
           headerHeight={80}
-          renderItem={() => (
+          renderItem={(item) => (
             <View style={{ height: 80, backgroundColor: 'pink' }}>
-              <Text>hello item</Text>
+              <Text>hello item{item}</Text>
             </View>
           )}
           ref={headerRef}
@@ -32,7 +32,7 @@ export default function App() {
             setTimeout(() => {
               setText('刷新完成');
               headerRef.current && headerRef.current.finishRefresh();
-            }, 3000);
+            }, 2000);
           }}
         />
       </View>
