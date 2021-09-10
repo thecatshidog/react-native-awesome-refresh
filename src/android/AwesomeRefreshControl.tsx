@@ -17,7 +17,9 @@ export const AwesomeRefreshView =
   requireNativeComponent<AwesomeRefreshViewProps>('AwesomeRefreshView');
 
 export class AwesomeRefreshControl extends Component<
-  AwesomeRefreshViewProps,
+  AwesomeRefreshViewProps & {
+    onHeaderReleased: () => void;
+  },
   {}
 > {
   private refreshRef = React.createRef<any>();
@@ -83,11 +85,16 @@ export class AwesomeRefreshControl extends Component<
     }
     return <DefaultHeader />;
   };
+
+  onHeaderReleased = () => {
+    const { onHeaderReleased } = this.props;
+    onHeaderReleased && onHeaderReleased();
+  };
   /**
    * 刷新时触发
    * @private
    */
-  _onSmartRefresh = () => {
+  onSmartRefresh = () => {
     let { onRefreshing } = this.props;
     onRefreshing && onRefreshing();
   };
@@ -113,7 +120,8 @@ export class AwesomeRefreshControl extends Component<
     const nativeProps = {
       ...this.props,
       ...{
-        onSmartRefresh: this._onSmartRefresh,
+        onSmartRefresh: this.onSmartRefresh,
+        onHeaderReleased: this.onHeaderReleased,
         onHeaderMoving: this.onHeaderMoving,
         onFooterMoving: this.onFooterMoving,
       },
