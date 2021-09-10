@@ -1,8 +1,8 @@
 import React from 'react';
 import {
   requireNativeComponent,
-  ScrollViewProps,
   StyleSheet,
+  ScrollViewProps,
 } from 'react-native';
 const AwesomeScrollViewRn = requireNativeComponent<any>('RCTMJScrollView');
 
@@ -13,9 +13,12 @@ export class AwesomeScrollView extends React.PureComponent<
   ScrollViewProps,
   any
 > {
+  constructor(props: ScrollViewProps) {
+    super(props);
+  }
   render() {
     return (
-      <AwesomeScrollViewRn style={styles.baseVertical}>
+      <AwesomeScrollViewRn {...this.props} style={styles.baseVertical}>
         {this.props.refreshControl && this.props.refreshControl}
         <AwesomeScrollContentView collapsable={false}>
           {this.props.children}
