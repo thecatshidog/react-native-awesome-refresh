@@ -34,7 +34,7 @@ const BoomListAndroid = React.forwardRef(
       <FlatList
         key="flatList"
         data={data}
-        renderItem={() => renderItem()}
+        renderItem={(item) => renderItem(item)}
         keyExtractor={(_, index) => index.toString()}
         {...restProps}
         refreshControl={
