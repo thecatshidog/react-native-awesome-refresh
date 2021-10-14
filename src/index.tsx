@@ -1,5 +1,11 @@
 import React from 'react';
-import { Platform, FlatList, StyleSheet, FlatListProps } from 'react-native';
+import {
+  Platform,
+  FlatList,
+  StyleSheet,
+  FlatListProps,
+  PanResponder,
+} from 'react-native';
 import { AwesomeRefreshControl as AwesomeRefreshControlAndroid } from './android';
 import {
   AwesomeRefreshControl as AwesomeRefreshControlIOS,
@@ -63,9 +69,20 @@ const BoomListIOS = React.forwardRef((props: BoomListProps, headerRef: any) => {
     onRefreshing = noop,
     ...restProps
   } = props;
+  const _panResponder = PanResponder.create({
+    onStartShouldSetPanResponder: () => true,
+    onStartShouldSetPanResponderCapture: () => false,
+    onMoveShouldSetPanResponder: () => true,
+    onMoveShouldSetPanResponderCapture: () => true,
+    onPanResponderTerminationRequest: () => true,
+    onShouldBlockNativeResponder: () => {
+      return false;
+    },
+  });
 
   return (
     <FlatList
+      {..._panResponder.panHandlers}
       data={data}
       renderItem={(item) => renderItem(item)}
       keyExtractor={(_, index) => index.toString()}
