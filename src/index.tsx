@@ -72,8 +72,14 @@ const BoomListIOS = React.forwardRef((props: BoomListProps, headerRef: any) => {
   const _panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
     onStartShouldSetPanResponderCapture: () => false,
-    onMoveShouldSetPanResponder: () => true,
-    onMoveShouldSetPanResponderCapture: () => true,
+    onMoveShouldSetPanResponder: (_, gestureState) => {
+      const { dy, dx } = gestureState;
+      if (dy === 0 && dx === 0) {
+        return false;
+      }
+      return true;
+    },
+    onMoveShouldSetPanResponderCapture: () => false,
     onPanResponderTerminationRequest: () => true,
     onShouldBlockNativeResponder: () => {
       return false;
