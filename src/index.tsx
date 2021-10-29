@@ -36,8 +36,26 @@ const BoomListAndroid = React.forwardRef(
       onRefreshing = noop,
       ...restProps
     } = props;
+    const _panResponder = PanResponder.create({
+      onStartShouldSetPanResponder: () => true,
+      onStartShouldSetPanResponderCapture: () => false,
+      onMoveShouldSetPanResponder: (_, gestureState) => {
+        const { dy, dx } = gestureState;
+        if (dy === 0 && dx === 0) {
+          return false;
+        }
+        return true;
+      },
+      onMoveShouldSetPanResponderCapture: () => false,
+      onPanResponderTerminationRequest: () => true,
+      onShouldBlockNativeResponder: () => {
+        return false;
+      },
+    });
+
     return (
       <FlatList
+        {..._panResponder.panHandlers}
         key="flatList"
         data={data}
         renderItem={(item) => renderItem(item)}

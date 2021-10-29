@@ -1,6 +1,6 @@
 {
   "name": "react-native-awesome-refresh",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "this is pull to refresh",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
